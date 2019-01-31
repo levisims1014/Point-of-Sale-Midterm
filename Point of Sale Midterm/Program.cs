@@ -10,6 +10,9 @@ namespace Point_of_Sale_Midterm
     {
         static void Main(string[] args)
         {
+            Console.WriteLine("Welcome to Tim Hortons!");
+            Controller obj = new Controller();
+
 
         }
     }
