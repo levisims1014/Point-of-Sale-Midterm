@@ -8,5 +8,6 @@ namespace Point_of_Sale_Midterm
 {
     class PaymentType
     {
+
     }
 }

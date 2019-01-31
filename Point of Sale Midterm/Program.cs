@@ -10,6 +10,7 @@ namespace Point_of_Sale_Midterm
     {
         static void Main(string[] args)
         {
+
         }
     }
 }
