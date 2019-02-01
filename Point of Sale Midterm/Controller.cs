@@ -41,14 +41,14 @@ namespace Point_of_Sale_Midterm
                 //Present a menu to the user and let them choose an item(by number orletter).
                 Console.WriteLine("What would you like to order?");
                 Console.WriteLine("Please choose the item by a number or by name");
-                var userInput = Console.ReadLine(); // read the user input We dont know if the input will be a number or string
+                var userInput = Console.ReadLine(); // I used(var) because We dont know if the user will enter a number or a string
                 bool gotValue = int.TryParse(userInput, out choice);
-                if (gotValue == true) //that mean the user choose an item from the menu by number
+                if (gotValue == true) //that mean the user choosed  an item from the menu by it's number
                 {
-                    //there are 12 items in the menu (the number should be 1 >=1 and numbe <= 12 )
+                    //there are 12 items in the menu (the number should be 1 >= 1 and numbe <= 12 )
                     if (choice >= 1 && choice <= 12)
                     {                   
-                     // Allow the user to choose a quantity for the item ordered.
+                     // Allow the user to choose a quantity for the ordered item.
                         Console.WriteLine("Please enter the quantity: ");
                         bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
                         if (gotQuanttity == false)//if the  user didn't enter a number
@@ -64,7 +64,7 @@ namespace Point_of_Sale_Midterm
                             continue;// give the user a nother chance to choose
                         }
                 }
-                else // that mean the user choose an item from the menu by name
+                else // that mean the user choosed an item from the menu by it's name
                 {
                         // check if the item name is in the menu
                         bool findItem = false;
@@ -94,17 +94,16 @@ namespace Point_of_Sale_Midterm
                     {
                         Console.WriteLine("Sorry we don't have " + userInput);
                         Console.WriteLine("Please try again");
-                        break;
+                        continue;
                     }
                 }
                     Console.WriteLine("would like to order any more items (yes/no)?");
                     string repeat = Console.ReadLine().ToLower();
                     if(repeat == "no")
                     {
+                        // when the user finish his order we are going to calculate the total,tax,then printing the receipt
                         Calculations obj = new Calculations(orderedItems);
                          obj.Totals();
-
-
                         break; // exit the loop
                     }
                     if (repeat == "yes")
