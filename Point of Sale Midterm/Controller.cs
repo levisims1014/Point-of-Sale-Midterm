@@ -101,6 +101,10 @@ namespace Point_of_Sale_Midterm
                     string repeat = Console.ReadLine().ToLower();
                     if(repeat == "no")
                     {
+                        Calculations obj = new Calculations(orderedItems);
+                         obj.Totals();
+
+
                         break; // exit the loop
                     }
                     if (repeat == "yes")
