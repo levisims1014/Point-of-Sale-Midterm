@@ -8,7 +8,7 @@ C:/Users/joysi/source/repos/Point of Sale Midterm/Point of Sale Midterm/obj/Debu
 /Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/bin/Debug/Point of Sale Midterm.exe.config
 /Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/bin/Debug/Point of Sale Midterm.exe
 /Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/bin/Debug/Point of Sale Midterm.pdb
-/Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.csprojAssemblyReference.cache
 /Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.csproj.CoreCompileInputs.cache
 /Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.exe
 /Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.pdb
+/Users/Noha/Desktop/MidtermProject/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.csprojAssemblyReference.cache

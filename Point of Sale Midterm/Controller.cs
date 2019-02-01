@@ -25,25 +25,22 @@ namespace Point_of_Sale_Midterm
             menu.Add(new ItemInformation("Parfait", "Dessert", "Yogurt, Berries, Granola", 1.99));
             menu.Add(new ItemInformation("Bagel", "Breakfast", "Bread, Cream Cheese", 1.99));
 
-
             MenuView obj = new MenuView(menu);
             obj.DisplayMenu();
-            Order();
-            
+             Order();
+
         }
         public void Order()
         {
-
-            MenuView obj = new MenuView(menu);
-            //Present a menu to the user and let them choose an item(by number orletter).
             bool orderAgain = true;
             while (orderAgain)
             {
                 List<orderedItemInfo> orderedItems = new List<orderedItemInfo>();//list of ordered items
-                Console.WriteLine("What would you like to order?");
-                Console.WriteLine("Please choose the item by a number or by name");
                 int quantityPerItem = 0;
                 int choice;
+                //Present a menu to the user and let them choose an item(by number orletter).
+                Console.WriteLine("What would you like to order?");
+                Console.WriteLine("Please choose the item by a number or by name");
                 var userInput = Console.ReadLine(); // read the user input We dont know if the input will be a number or string
                 bool gotValue = int.TryParse(userInput, out choice);
                 if (gotValue == true) //that mean the user choose an item from the menu by number
@@ -60,9 +57,8 @@ namespace Point_of_Sale_Midterm
                             continue;// give the user a nother chance to choose
                         }
                         orderedItems.Add(new orderedItemInfo(menu[choice].Name , menu[choice].Price, quantityPerItem));
-
                     }
-                        else
+                    else//the user entered a number that is not in the list
                         {
                             Console.WriteLine("you entered unvalid number!!");
                             continue;// give the user a nother chance to choose
@@ -72,28 +68,35 @@ namespace Point_of_Sale_Midterm
                 {
                         // check if the item name is in the menu
                         bool findItem = false;
-                        foreach (ItemInformation userChoice in menu)
+                         double pricePerItem =0;
+                        foreach (ItemInformation s in menu)
                         {
-                            if (userInput == userChoice.Name)
+                             if (userInput == s.Name)
                             {
-                                findItem = true;//the item in the menu
-                                Console.WriteLine("Please enter the quantity: ");
-                                bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
-                                if (gotQuanttity == false)//if the  user didn't enter a number ex string or a character
-                                {
-                                    Console.WriteLine("you entered unvalid number for quantity!!");
-                                    continue;// give the user a nother chance to choose
-                                }
-                            orderedItems.Add(new orderedItemInfo(userChoice.Name, userChoice.Price, quantityPerItem));
-                            }
-                            else// we don't have this iteam in the menu
-                            {
-                                Console.WriteLine("Sorry we don't have " + userInput);
-                                Console.WriteLine("Please try again");
-                                obj.DisplayMenu();
+                                findItem = true;//the item is in the menu
+                                pricePerItem = s.Price;
                             }
                         }
-                   }
+                        if(findItem == true)
+                         {
+                             Console.WriteLine("Please enter the quantity: ");
+                             bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
+                             if (gotQuanttity == false)//if the  user didn't enter a number ex string or a character
+                             {
+                                 Console.WriteLine("you entered unvalid number for quantity!!");
+                                 continue;// give the user a nother chance to choose
+                             }
+                             orderedItems.Add(new orderedItemInfo(userInput, pricePerItem, quantityPerItem));
+                         }
+
+
+                    else if (findItem == false)// we don't have this iteam in the menu
+                    {
+                        Console.WriteLine("Sorry we don't have " + userInput);
+                        Console.WriteLine("Please try again");
+                        break;
+                    }
+                }
                     Console.WriteLine("would like to order any more items (yes/no)?");
                     string repeat = Console.ReadLine().ToLower();
                     if(repeat == "no")
@@ -102,7 +105,7 @@ namespace Point_of_Sale_Midterm
                     }
                     if (repeat == "yes")
                     {
-                        continue; // exit the loop
+                        continue; 
                     }
                     else 
                     {
