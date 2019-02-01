@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Midterm
 {
+
     class Controller
     {
         List<ItemInformation> menu = new List<ItemInformation>();
@@ -32,10 +33,85 @@ namespace Point_of_Sale_Midterm
         }
         public void Order()
         {
-            Console.WriteLine("What would you like to order?");
-            int choice;
-            bool gotValue = int.TryParse(Console.ReadLine(),out choice);
-            Console.WriteLine(gotValue);
+
+            MenuView obj = new MenuView(menu);
+            //Present a menu to the user and let them choose an item(by number orletter).
+            bool orderAgain = true;
+            while (orderAgain)
+            {
+                List<orderedItemInfo> orderedItems = new List<orderedItemInfo>();//list of ordered items
+                Console.WriteLine("What would you like to order?");
+                Console.WriteLine("Please choose the item by a number or by name");
+                int quantityPerItem = 0;
+                int choice;
+                var userInput = Console.ReadLine(); // read the user input We dont know if the input will be a number or string
+                bool gotValue = int.TryParse(userInput, out choice);
+                if (gotValue == true) //that mean the user choose an item from the menu by number
+                {
+                    //there are 12 items in the menu (the number should be 1 >=1 and numbe <= 12 )
+                    if (choice >= 1 && choice <= 12)
+                    {                   
+                     // Allow the user to choose a quantity for the item ordered.
+                        Console.WriteLine("Please enter the quantity: ");
+                        bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
+                        if (gotQuanttity == false)//if the  user didn't enter a number
+                        {
+                            Console.WriteLine("you entered unvalid number for quantity!!");
+                            continue;// give the user a nother chance to choose
+                        }
+                        orderedItems.Add(new orderedItemInfo(menu[choice].Name , menu[choice].Price, quantityPerItem));
+
+                    }
+                        else
+                        {
+                            Console.WriteLine("you entered unvalid number!!");
+                            continue;// give the user a nother chance to choose
+                        }
+                }
+                else // that mean the user choose an item from the menu by name
+                {
+                        // check if the item name is in the menu
+                        bool findItem = false;
+                        foreach (ItemInformation userChoice in menu)
+                        {
+                            if (userInput == userChoice.Name)
+                            {
+                                findItem = true;//the item in the menu
+                                Console.WriteLine("Please enter the quantity: ");
+                                bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
+                                if (gotQuanttity == false)//if the  user didn't enter a number ex string or a character
+                                {
+                                    Console.WriteLine("you entered unvalid number for quantity!!");
+                                    continue;// give the user a nother chance to choose
+                                }
+                            orderedItems.Add(new orderedItemInfo(userChoice.Name, userChoice.Price, quantityPerItem));
+                            }
+                            else// we don't have this iteam in the menu
+                            {
+                                Console.WriteLine("Sorry we don't have " + userInput);
+                                Console.WriteLine("Please try again");
+                                obj.DisplayMenu();
+                            }
+                        }
+                   }
+                    Console.WriteLine("would like to order any more items (yes/no)?");
+                    string repeat = Console.ReadLine().ToLower();
+                    if(repeat == "no")
+                    {
+                        break; // exit the loop
+                    }
+                    if (repeat == "yes")
+                    {
+                        continue; // exit the loop
+                    }
+                    else 
+                    {
+                        Console.WriteLine("Sorry your choice was not clear!!");
+                        continue;
+                    }
+
+            }
+
         }
     }
 }
