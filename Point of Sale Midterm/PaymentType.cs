@@ -7,7 +7,7 @@ using System.Text.RegularExpressions;
 
 namespace Point_of_Sale_Midterm
 {
-    class PaymentType 
+    class PaymentType
     {
         public PaymentType()
         {
@@ -15,7 +15,7 @@ namespace Point_of_Sale_Midterm
         }
         public void PaymentOption()
         {
-            
+
             bool run = true;
             while (run == true)
             {
@@ -27,7 +27,7 @@ namespace Point_of_Sale_Midterm
                     Console.WriteLine("Sorry didn't understand input!");
                     run = true;
                 }
-                else if(input >= 1 && input <= 3)
+                else if (input >= 1 && input <= 3)
                 {
                     run = false;
                 }
@@ -46,7 +46,7 @@ namespace Point_of_Sale_Midterm
                 }
                 else if (input == 3)
                 {
-                    Check();
+                   // Check();
                 }
             }
         }
@@ -72,30 +72,45 @@ namespace Point_of_Sale_Midterm
         }
         public void CreditCard()
         {
-            bool cardcheck = true;
-            while (cardcheck == true)
+            Console.WriteLine("Please enter your credit card number:");
+            Regex cardNumber = new Regex(@"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$");
+            Regex cardExpiration= new Regex(@"^((0[1-9])|(1[0-2]))\/((2019)|(20[1-2][0-9]))$");
+            Regex cardCvv = new Regex(@"^[0-9]{3,4}$");
+
+            string creditExperition;
+            string cvv;
+
+            string creditNumber = Console.ReadLine();
+            Match validateCreditNumber = cardNumber.Match(creditNumber);
+
+
+            if (validateCreditNumber.Success)
             {
-                string creditnumber;
-                Console.WriteLine("Please enter your credit card number, expiration, and CVV");
-                creditnumber = Console.ReadLine();
-                string visa = "^ 4[0 - 9]{ 12} (?:[0 - 9]{ 3})?$";
-                string mastercard = "^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$";
-                if (!Regex.IsMatch(creditnumber, visa) || !Regex.IsMatch(creditnumber, mastercard))
+                Console.WriteLine("The card number entered is vaild");
+                Console.WriteLine("Please enter the credit card expiration in the form of(MM/YYYY)");
+                creditExperition = Console.ReadLine();
+                Match expiration = cardExpiration.Match(creditExperition);
+                if (expiration.Success)
                 {
-                    Console.WriteLine("Card accepted!");
-                    cardcheck = false;
+                    Console.WriteLine("valid");
+                    Console.WriteLine("Please enter the credit card CVV");
+                    cvv = Console.ReadLine();
+                    Match validateCvv = cardCvv.Match(cvv);
+                    Console.WriteLine("valid");
+
+
                 }
-                else
+                else 
                 {
-                    Console.WriteLine("Card information is not valid");
+                    Console.WriteLine("unvalid");
                 }
 
             }
+            else
+            {
+                Console.WriteLine("The card number entered is unvaild");
+            }
         }
-        public void Check()
-        {
-
-        }
-
     }
 }
+        

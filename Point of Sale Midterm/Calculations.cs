@@ -16,7 +16,7 @@ namespace Point_of_Sale_Midterm
         public Calculations(List<orderedItemInfo> orderedItems)
         {
             this.orderedItems = orderedItems;
-            Totals();
+           Totals();
         }
         
         public void Totals() //change to public static int Totals (pass in list) return 
