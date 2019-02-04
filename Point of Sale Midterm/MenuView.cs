@@ -16,7 +16,7 @@ namespace Point_of_Sale_Midterm
 
         public void DisplayMenu()
         {
-            int i = 1;
+            int i = 0;
             string s = string.Format("{0,-4}{1,-40} {2,-30} {3, -40} {4, -20}", "","Name", "Category", "Description", "Price");
 
             ConsoleColor color = ConsoleColor.DarkRed;
@@ -26,14 +26,10 @@ namespace Point_of_Sale_Midterm
 
             foreach (ItemInformation item in Items)
             {
-                string b= string.Format("{0,-4}{1,-40} {2,-30} {3, -40} {4, -20}", i + ".)", item.Name, item.Category, item.Description, item.Price);
+                string b= string.Format("{0,-4}{1,-40} {2,-30} {3, -40} {4, -20}", i+1 + ".)", item.Name, item.Category, item.Description, item.Price);
                 ConsoleColor coloor = ConsoleColor.DarkMagenta;
                 Console.ForegroundColor = coloor;
-
                 Console.WriteLine(b);
-
-                //Format To.String to Monday to get proper format
-               //Console.WriteLine(i + ".)" + item.Name + "\t" + item.Category + "\t" + item.Description + "\t" + item.Price);
                 i++;
             }
         }

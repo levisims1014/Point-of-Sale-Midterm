@@ -11,11 +11,11 @@ namespace Point_of_Sale_Midterm
         static void Main(string[] args)
         {
            
-            string s = string.Format("{0,100}","******** Welcome to Tim Hortons ********");
-            Console.WriteLine(s);
-            Console.WriteLine();
-            Controller obj = new Controller();
-
+             string s = string.Format("{0,100}","******** Welcome to Tim Hortons ********");
+             Console.WriteLine(s);
+             Console.WriteLine();
+             Controller obj = new Controller();
+           
 
         }
     }

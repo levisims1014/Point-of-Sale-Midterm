@@ -68,7 +68,7 @@ namespace Point_of_Sale_Midterm
                                 goto QuentityCheck;// give the user a nother chance to choose a valid number for quantity
                             }
                         }
-                        orderedItems.Add(new orderedItemInfo(menu[choice].Name , menu[choice].Price, quantityPerItem));
+                        orderedItems.Add(new orderedItemInfo(menu[choice -1].Name , menu[choice-1].Price, quantityPerItem));
                     }
                     else//the user entered a number that is not in the list
                         {
@@ -129,8 +129,10 @@ namespace Point_of_Sale_Midterm
                     if (repeat == "no")
                     {
                         // when the user finish his order we are going to calculate the total,tax,then printing the receipt
-                        Calculations obj = new Calculations(orderedItems);
-                        obj.Totals();
+                       Calculations obj = new Calculations(orderedItems);
+                       obj.Totals();
+                       Receipt receipt = new Receipt(orderedItems);
+                        receipt.DisplayReceript();
                         break; // exit the loop
                     }
                     if (repeat == "yes")
