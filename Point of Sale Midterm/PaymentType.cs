@@ -8,6 +8,22 @@ namespace Point_of_Sale_Midterm
 {
     class PaymentType
     {
+        public PaymentType()
+        {
+
+        }
+        public static void Cash()
+        {
+
+        }
+        public static void CreditCard()
+        {
+
+        }
+        public static void Check()
+        {
+
+        }
 
     }
 }
