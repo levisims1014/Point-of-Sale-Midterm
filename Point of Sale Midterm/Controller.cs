@@ -44,7 +44,8 @@ namespace Point_of_Sale_Midterm
                 ConsoleColor color = ConsoleColor.Blue;
                 Console.ForegroundColor = color;
                 Console.WriteLine("What would you like to order?");
-                Console.WriteLine("Please choose the item by a number or by name");
+                Console.WriteLine();
+                Console.WriteLine("Please choose an item by a number or by a name:");
                 var userInput = Console.ReadLine(); // I used(var) because We dont know if the user will enter a number or a string
                 bool gotValue = int.TryParse(userInput, out choice);
                 if (gotValue == true) //that mean the user choosed  an item from the menu by it's number
@@ -119,25 +120,32 @@ namespace Point_of_Sale_Midterm
                         continue;
                     }
                 }
+            repeatTheorder:
+                {
+                    color = ConsoleColor.Blue;
+                    Console.ForegroundColor = color;
                     Console.WriteLine("would like to order any more items (yes/no)?");
                     string repeat = Console.ReadLine().ToLower();
-                    if(repeat == "no")
+                    if (repeat == "no")
                     {
                         // when the user finish his order we are going to calculate the total,tax,then printing the receipt
                         Calculations obj = new Calculations(orderedItems);
-                         obj.Totals();
+                        obj.Totals();
                         break; // exit the loop
                     }
                     if (repeat == "yes")
                     {
                         obj.DisplayMenu();
-                        continue; 
-                    }
-                    else 
-                    {
-                        Console.WriteLine("Sorry your choice was not clear!!");
                         continue;
                     }
+                    else
+                    {
+                        color = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = color;
+                        Console.WriteLine("Sorry your choice was not clear!!");
+                        goto repeatTheorder;
+                    }
+                }
 
             }
 
