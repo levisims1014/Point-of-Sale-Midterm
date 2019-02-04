@@ -131,6 +131,8 @@ namespace Point_of_Sale_Midterm
                        obj.Totals();
                        Receipt receipt = new Receipt(orderedItems);
                         receipt.DisplayReceript();
+                        PaymentType paymentobj = new PaymentType();
+                        paymentobj.PaymentOption();
                         break; // exit the loop
                     }
                     if (repeat == "yes")
