@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-
 namespace Point_of_Sale_Midterm
 {
     class MenuView
@@ -12,19 +11,32 @@ namespace Point_of_Sale_Midterm
         public MenuView(List<ItemInformation> items)
         {
             this.Items = items;
-            
+
         }
-        
+
         public void DisplayMenu()
         {
             int i = 1;
+            string s = string.Format("{0,-4}{1,-40} {2,-30} {3, -40} {4, -20}", "","Name", "Category", "Description", "Price");
+
+            ConsoleColor color = ConsoleColor.DarkRed;
+            Console.ForegroundColor = color;
+
+            Console.WriteLine(s);
+
             foreach (ItemInformation item in Items)
             {
-                
+                string b= string.Format("{0,-4}{1,-40} {2,-30} {3, -40} {4, -20}", i + ".)", item.Name, item.Category, item.Description, item.Price);
+                ConsoleColor coloor = ConsoleColor.DarkMagenta;
+                Console.ForegroundColor = coloor;
+
+                Console.WriteLine(b);
+
                 //Format To.String to Monday to get proper format
-                Console.WriteLine(i +".)"+ item.Name + "\t" + item.Category + "\t" + item.Description + "\t" + item.Price);
+               //Console.WriteLine(i + ".)" + item.Name + "\t" + item.Category + "\t" + item.Description + "\t" + item.Price);
                 i++;
             }
         }
     }
 }
+ 

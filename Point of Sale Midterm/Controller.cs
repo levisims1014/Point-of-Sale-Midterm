@@ -10,6 +10,8 @@ namespace Point_of_Sale_Midterm
     class Controller
     {
         List<ItemInformation> menu = new List<ItemInformation>();
+        MenuView obj;
+
         public Controller()
         {
             menu.Add(new ItemInformation("Hot Chocolate", "Hot Beverage", "Milk, Cocoa, Sugar, Fat", 1.99));
@@ -17,28 +19,30 @@ namespace Point_of_Sale_Midterm
             menu.Add(new ItemInformation("Coffee", "Hot Beverage", "Coffee, Water", 1.00));
             menu.Add(new ItemInformation("Tea", "Hot Beverage", "Black Tea", 1.00));
             menu.Add(new ItemInformation("Frozen Lemonade", "Cold Beverage", "Lemon, Sugar, Ice", 1.99));
-            menu.Add(new ItemInformation("Breakfast Wrap", "Breakfast", "Bread, Potatoes, Eggs", 3.00));
-            menu.Add(new ItemInformation("Sauasage Muffin", "Breakfast", "Biscuit, Sausage, Egg, Cheese", 3.00));
-            menu.Add(new ItemInformation("Donuts", "Dessert", "Sugar, Bread, Oil, Butter", 0.50));
-            menu.Add(new ItemInformation("Chicken and Mozzarella Panini", "Lunch", "Chicken, Mozzarella, Bread", 3.00));
-            menu.Add(new ItemInformation("Crispy Chicken Sandwich", "Lunch", "Chicken, Bread, Lettuce, Tomato", 3.00));
-            menu.Add(new ItemInformation("Parfait", "Dessert", "Yogurt, Berries, Granola", 1.99));
-            menu.Add(new ItemInformation("Bagel", "Breakfast", "Bread, Cream Cheese", 1.99));
+            menu.Add(new ItemInformation("Breakfast Wrap", "Breakfast", "Bread,Potatoes,Eggs", 3.00));
+            menu.Add(new ItemInformation("Sauasage Muffin", "Breakfast", "Biscuit,Sausage,Egg,Cheese", 3.00));
+            menu.Add(new ItemInformation("Donuts", "Dessert", "Sugar,Bread,Oil,Butter", 0.50));
+            menu.Add(new ItemInformation("Chicken and Mozzarella Panini", "Lunch", "Chicken,Mozzarella,Bread", 3.00));
+            menu.Add(new ItemInformation("Crispy Chicken Sandwich", "Lunch", "Chicken,Bread,Lettuce,Tomato", 3.00));
+            menu.Add(new ItemInformation("Parfait", "Dessert", "Yogurt,Berries,Granola", 1.99));
+            menu.Add(new ItemInformation("Bagel", "Breakfast", "Bread,Cream Cheese", 1.99));
 
-            MenuView obj = new MenuView(menu);
+            obj = new MenuView(menu);
             obj.DisplayMenu();
              Order();
 
         }
         public void Order()
         {
+            List<orderedItemInfo> orderedItems = new List<orderedItemInfo>();//list of ordered items
             bool orderAgain = true;
             while (orderAgain)
             {
-                List<orderedItemInfo> orderedItems = new List<orderedItemInfo>();//list of ordered items
                 int quantityPerItem = 0;
                 int choice;
                 //Present a menu to the user and let them choose an item(by number orletter).
+                ConsoleColor color = ConsoleColor.Blue;
+                Console.ForegroundColor = color;
                 Console.WriteLine("What would you like to order?");
                 Console.WriteLine("Please choose the item by a number or by name");
                 var userInput = Console.ReadLine(); // I used(var) because We dont know if the user will enter a number or a string
@@ -47,21 +51,30 @@ namespace Point_of_Sale_Midterm
                 {
                     //there are 12 items in the menu (the number should be 1 >= 1 and numbe <= 12 )
                     if (choice >= 1 && choice <= 12)
-                    {                   
-                     // Allow the user to choose a quantity for the ordered item.
-                        Console.WriteLine("Please enter the quantity: ");
-                        bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
-                        if (gotQuanttity == false)//if the  user didn't enter a number
+                    {
+                    // Allow the user to choose a quantity for the ordered item.
+                    QuentityCheck:
                         {
-                            Console.WriteLine("you entered unvalid number for quantity!!");
-                            continue;// give the user a nother chance to choose
+                            color = ConsoleColor.Blue;
+                            Console.ForegroundColor = color;
+                            Console.WriteLine("Please enter the quantity: ");
+                            bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
+                            if (gotQuanttity == false)//if the  user didn't enter a number
+                            {
+                                color = ConsoleColor.DarkRed;
+                                Console.ForegroundColor = color;
+                                Console.WriteLine("you entered unvalid number for quantity!!");
+                                goto QuentityCheck;// give the user a nother chance to choose a valid number for quantity
+                            }
                         }
                         orderedItems.Add(new orderedItemInfo(menu[choice].Name , menu[choice].Price, quantityPerItem));
                     }
                     else//the user entered a number that is not in the list
                         {
-                            Console.WriteLine("you entered unvalid number!!");
-                            continue;// give the user a nother chance to choose
+                            color = ConsoleColor.DarkRed;
+                            Console.ForegroundColor = color;
+                            Console.WriteLine("This number is not in the menu!!");
+                                continue;// give the user a nother chance to choose from the menu
                         }
                 }
                 else // that mean the user choosed an item from the menu by it's name
@@ -77,21 +90,30 @@ namespace Point_of_Sale_Midterm
                                 pricePerItem = s.Price;
                             }
                         }
-                        if(findItem == true)
-                         {
-                             Console.WriteLine("Please enter the quantity: ");
-                             bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
-                             if (gotQuanttity == false)//if the  user didn't enter a number ex string or a character
-                             {
-                                 Console.WriteLine("you entered unvalid number for quantity!!");
-                                 continue;// give the user a nother chance to choose
-                             }
-                             orderedItems.Add(new orderedItemInfo(userInput, pricePerItem, quantityPerItem));
-                         }
+                    if (findItem == true)
+                    {
+                    quantityCheck:
+                        {
+                            color = ConsoleColor.Blue;
+                            Console.ForegroundColor = color;
+                            Console.WriteLine("Please enter the quantity: ");
+                            bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
+                            if (gotQuanttity == false)//if the  user didn't enter a number ex string or a character
+                            {
+                                color = ConsoleColor.DarkRed;
+                                Console.ForegroundColor = color;
+                                Console.WriteLine("you entered unvalid number for quantity!!");
+                                goto quantityCheck;// give the user a nother chance to choose a valid number for quantity
+                            }
+                            orderedItems.Add(new orderedItemInfo(userInput, pricePerItem, quantityPerItem));
+                        }
+                    }
 
 
                     else if (findItem == false)// we don't have this iteam in the menu
                     {
+                        color = ConsoleColor.DarkRed;
+                        Console.ForegroundColor = color;
                         Console.WriteLine("Sorry we don't have " + userInput);
                         Console.WriteLine("Please try again");
                         continue;
@@ -108,6 +130,7 @@ namespace Point_of_Sale_Midterm
                     }
                     if (repeat == "yes")
                     {
+                        obj.DisplayMenu();
                         continue; 
                     }
                     else 

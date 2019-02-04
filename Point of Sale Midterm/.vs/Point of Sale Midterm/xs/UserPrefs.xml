@@ -1,12 +1,14 @@
 ﻿<Properties StartupConfiguration="{641429F4-CA58-424A-ABF9-201E426D3B2A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Calculations.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="MenuView.cs">
     <Files>
       <File FileName="ItemInformation.cs" Line="28" Column="1" />
       <File FileName="MenuView.cs" Line="1" Column="1" />
-      <File FileName="Controller.cs" Line="67" Column="2" />
+      <File FileName="Controller.cs" Line="31" Column="1" />
       <File FileName="orderedItemInfo.cs" Line="4" Column="20" />
       <File FileName="Program.cs" Line="14" Column="13" />
-      <File FileName="Calculations.cs" Line="11" Column="9" />
+      <File FileName="Calculations.cs" Line="19" Column="29" />
+      <File FileName="Receipt.cs" Line="1" Column="1" />
+      <File FileName="PaymentType.cs" Line="14" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Point_220of_220Sale_220Midterm PreferredExecutionTarget="MonoDevelop.Default" />
