@@ -8,10 +8,13 @@ namespace Point_of_Sale_Midterm
 {
     class Receipt
     {
-        List<orderedItemInfo> orderedList = new List<orderedItemInfo>(); 
-        public Receipt(List<orderedItemInfo> orderedItems)
+        Calculations calculation ;
+        List<orderedItemInfo> orderedList; 
+        public Receipt( Calculations calculation)
         {
-            this.orderedList = orderedItems;
+            this.calculation = calculation;
+            //this.orderedList = calculation.orderedItems;
+            orderedList = new List<orderedItemInfo>(calculation.orderedItems);
         }
 
         // At the end, display a receipt with all items ordered, subtotal, grand total, and
@@ -34,6 +37,8 @@ namespace Point_of_Sale_Midterm
                 order = string.Format("{0,-40} {1,-40} {2,-40}", orderedItem.Name, orderedItem.Quantity, orderedItem.Price);
                 Console.WriteLine(order);
             }
+            Console.WriteLine();
+            calculation.Totals();
 
             DateTime today = DateTime.Today;
             Console.WriteLine(today);

@@ -12,11 +12,10 @@ namespace Point_of_Sale_Midterm
         double subtotal;
         double salesTax;
         double grandTotal;
-        List<orderedItemInfo> orderedItems = new List<orderedItemInfo>();
+        public List<orderedItemInfo> orderedItems = new List<orderedItemInfo>();
         public Calculations(List<orderedItemInfo> orderedItems)
         {
             this.orderedItems = orderedItems;
-           Totals();
         }
         
         public void Totals() //change to public static int Totals (pass in list) return 
@@ -29,7 +28,6 @@ namespace Point_of_Sale_Midterm
             foreach (orderedItemInfo item in orderedItems)
             {
                 subtotal = item.Price * item.Quantity;
-                Console.WriteLine(item.Name + "\t" + "Quantity: " + item.Quantity + "\t" + subtotal);//transfer to receipt view for later
                 costs.Add(subtotal);
             }
             double sum = costs.Sum();
