@@ -25,7 +25,7 @@ namespace Point_of_Sale_Midterm
             Console.WriteLine(s);
              color = ConsoleColor.DarkMagenta;
             Console.ForegroundColor = color;
-            string order = string.Format("{0,-40} {1,-40} {2,-40}", "Name", "Quantity", "Price");
+            string order = string.Format("{0,-40} {1,-40} {2,-40}", "Name", "Quantity", "Price per item");
             Console.WriteLine(order);
             color = ConsoleColor.Blue;
             Console.ForegroundColor = color;

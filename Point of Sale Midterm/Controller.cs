@@ -6,12 +6,11 @@ using System.Threading.Tasks;
 
 namespace Point_of_Sale_Midterm
 {
-
     class Controller
     {
         List<ItemInformation> menu = new List<ItemInformation>();
         MenuView obj;
-
+        ConsoleColor color;
         public Controller()
         {
             menu.Add(new ItemInformation("Hot Chocolate", "Hot Beverage", "Milk, Cocoa, Sugar, Fat", 1.99));
@@ -26,11 +25,20 @@ namespace Point_of_Sale_Midterm
             menu.Add(new ItemInformation("Crispy Chicken Sandwich", "Lunch", "Chicken,Bread,Lettuce,Tomato", 3.00));
             menu.Add(new ItemInformation("Parfait", "Dessert", "Yogurt,Berries,Granola", 1.99));
             menu.Add(new ItemInformation("Bagel", "Breakfast", "Bread,Cream Cheese", 1.99));
-
             obj = new MenuView(menu);
             obj.DisplayMenu();
              Order();
+        }
 
+        public void SetConsoleColorBlue()
+        {
+             color = ConsoleColor.Blue;
+             Console.ForegroundColor = color;
+        }
+        public void SetConsoleColorRed()
+        {
+            color = ConsoleColor.DarkRed;
+            Console.ForegroundColor = color;
         }
         public void Order()
         {
@@ -41,8 +49,7 @@ namespace Point_of_Sale_Midterm
                 int quantityPerItem = 0;
                 int choice;
                 //Present a menu to the user and let them choose an item(by number orletter).
-                ConsoleColor color = ConsoleColor.Blue;
-                Console.ForegroundColor = color;
+                SetConsoleColorBlue();
                 Console.WriteLine("What would you like to order?");
                 Console.WriteLine();
                 Console.WriteLine("Please choose an item by a number or by a name:");
@@ -55,66 +62,58 @@ namespace Point_of_Sale_Midterm
                     {
                     // Allow the user to choose a quantity for the ordered item.
                     QuentityCheck:
-                        {
-                            color = ConsoleColor.Blue;
-                            Console.ForegroundColor = color;
-                            Console.WriteLine("Please enter the quantity: ");
-                            bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
-                            if (gotQuanttity == false)//if the  user didn't enter a number
-                            {
-                                color = ConsoleColor.DarkRed;
-                                Console.ForegroundColor = color;
-                                Console.WriteLine("you entered unvalid number for quantity!!");
-                                goto QuentityCheck;// give the user a nother chance to choose a valid number for quantity
-                            }
-                        }
+                    {
+                       SetConsoleColorBlue();
+                       Console.WriteLine("Please enter the quantity: ");
+                       bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
+                       if (gotQuanttity == false)//if the  user didn't enter a number
+                       {
+                         SetConsoleColorRed();
+                         Console.WriteLine("you entered unvalid number for quantity!!");
+                         goto QuentityCheck;// give the user a nother chance to choose a valid number for quantity
+                       }
+                     }
                         orderedItems.Add(new orderedItemInfo(menu[choice -1].Name , menu[choice-1].Price, quantityPerItem));
                     }
                     else//the user entered a number that is not in the list
                         {
-                            color = ConsoleColor.DarkRed;
-                            Console.ForegroundColor = color;
+                            SetConsoleColorRed();
                             Console.WriteLine("This number is not in the menu!!");
-                                continue;// give the user a nother chance to choose from the menu
+                            continue;// give the user a nother chance to choose from the menu
                         }
                 }
                 else // that mean the user choosed an item from the menu by it's name
                 {
-                        // check if the item name is in the menu
-                        bool findItem = false;
-                         double pricePerItem =0;
-                        foreach (ItemInformation s in menu)
-                        {
-                             if (userInput == s.Name)
-                            {
-                                findItem = true;//the item is in the menu
-                                pricePerItem = s.Price;
-                            }
-                        }
+                     // check if the item name is in the menu
+                      bool findItem = false;
+                      double pricePerItem =0;
+                      foreach (ItemInformation s in menu)
+                       {
+                         if (userInput == s.Name)
+                         {
+                            findItem = true;//the item is in the menu
+                            pricePerItem = s.Price;
+                         }
+                       }
                     if (findItem == true)
                     {
-                    quantityCheck:
-                        {
-                            color = ConsoleColor.Blue;
-                            Console.ForegroundColor = color;
-                            Console.WriteLine("Please enter the quantity: ");
-                            bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
-                            if (gotQuanttity == false)//if the  user didn't enter a number ex string or a character
+                        quantityCheck:
                             {
-                                color = ConsoleColor.DarkRed;
-                                Console.ForegroundColor = color;
-                                Console.WriteLine("you entered unvalid number for quantity!!");
-                                goto quantityCheck;// give the user a nother chance to choose a valid number for quantity
+                                SetConsoleColorBlue();
+                                Console.WriteLine("Please enter the quantity: ");
+                                bool gotQuanttity = int.TryParse(Console.ReadLine(), out quantityPerItem);
+                                if (gotQuanttity == false)//if the  user didn't enter a number ex string or a character
+                                {
+                                    SetConsoleColorRed();
+                                    Console.WriteLine("you entered unvalid number for quantity!!");
+                                    goto quantityCheck;// give the user a nother chance to choose a valid number for quantity
+                                }
+                                orderedItems.Add(new orderedItemInfo(userInput, pricePerItem, quantityPerItem));
                             }
-                            orderedItems.Add(new orderedItemInfo(userInput, pricePerItem, quantityPerItem));
-                        }
                     }
-
-
                     else if (findItem == false)// we don't have this iteam in the menu
                     {
-                        color = ConsoleColor.DarkRed;
-                        Console.ForegroundColor = color;
+                        SetConsoleColorRed();
                         Console.WriteLine("Sorry we don't have " + userInput);
                         Console.WriteLine("Please try again");
                         continue;
@@ -122,8 +121,7 @@ namespace Point_of_Sale_Midterm
                 }
             repeatTheorder:
                 {
-                    color = ConsoleColor.Blue;
-                    Console.ForegroundColor = color;
+                    SetConsoleColorBlue();
                     Console.WriteLine("would like to order any more items (yes/no)?");
                     string repeat = Console.ReadLine().ToLower();
                     if (repeat == "no")
@@ -142,15 +140,12 @@ namespace Point_of_Sale_Midterm
                     }
                     else
                     {
-                        color = ConsoleColor.DarkRed;
-                        Console.ForegroundColor = color;
+                        SetConsoleColorRed();
                         Console.WriteLine("Sorry your choice was not clear!!");
                         goto repeatTheorder;
                     }
                 }
-
             }
-
         }
     }
 }
