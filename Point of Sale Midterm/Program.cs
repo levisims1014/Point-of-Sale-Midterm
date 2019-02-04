@@ -13,7 +13,7 @@ namespace Point_of_Sale_Midterm
             string s = string.Format("{0,100}","******** Welcome to Tim Hortons ********");
              Console.WriteLine(s);
              Console.WriteLine();
-             Controller obj = new Controller();
+            Controller obj = new Controller();
            
 
         }

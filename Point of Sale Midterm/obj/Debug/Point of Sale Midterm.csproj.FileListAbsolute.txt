@@ -19,3 +19,10 @@ C:/Users/joysi/Desktop/Point of Sale Midterm/Point of Sale Midterm/obj/Debug/Poi
 C:/Users/joysi/Desktop/Point of Sale Midterm/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.csproj.CoreCompileInputs.cache
 C:/Users/joysi/Desktop/Point of Sale Midterm/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.exe
 C:/Users/joysi/Desktop/Point of Sale Midterm/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.pdb
+C:\Users\john\source\repos\Midterm\Point of Sale Midterm\bin\Debug\Point of Sale Midterm.exe.config
+C:\Users\john\source\repos\Midterm\Point of Sale Midterm\bin\Debug\Point of Sale Midterm.exe
+C:\Users\john\source\repos\Midterm\Point of Sale Midterm\bin\Debug\Point of Sale Midterm.pdb
+C:\Users\john\source\repos\Midterm\Point of Sale Midterm\obj\Debug\Point of Sale Midterm.csprojAssemblyReference.cache
+C:\Users\john\source\repos\Midterm\Point of Sale Midterm\obj\Debug\Point of Sale Midterm.csproj.CoreCompileInputs.cache
+C:\Users\john\source\repos\Midterm\Point of Sale Midterm\obj\Debug\Point of Sale Midterm.exe
+C:\Users\john\source\repos\Midterm\Point of Sale Midterm\obj\Debug\Point of Sale Midterm.pdb
