@@ -46,8 +46,39 @@ namespace Point_of_Sale_Midterm
                 }
                 else if (input == 3)
                 {
-                   // Check();
+                    Check();
                 }
+            }
+        }
+        public void Check()
+        {
+            Regex routing = new Regex("^[0-9]{8,10}$");
+            Regex account = new Regex("^[0-9]{10,17}$");
+
+            Console.WriteLine("Please enter in your routing number.(8-10 digits)");
+            string userRouting = Console.ReadLine();
+
+            Match validRouting = routing.Match(userRouting);
+            if (validRouting.Success)
+            {
+                Console.WriteLine("Please enter in your account number. (10-17 digits) ");
+                string userAccount = Console.ReadLine();
+                Match validAccount = account.Match(userAccount);
+                if (validAccount.Success)
+                {
+                    Console.WriteLine("valid");
+                }
+                else
+                {
+                    Console.WriteLine("Invalid");
+                    PaymentOption();
+                }
+
+            }
+            else
+            {
+                Console.WriteLine("Invalid.");
+                PaymentOption();
             }
         }
         public double Cash()
@@ -74,7 +105,7 @@ namespace Point_of_Sale_Midterm
         {
             Console.WriteLine("Please enter your credit card number:");
             Regex cardNumber = new Regex(@"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$");
-            Regex cardExpiration= new Regex(@"^((0[1-9])|(1[0-2]))\/((2019)|(20[1-2][0-9]))$");
+            Regex cardExpiration = new Regex(@"^((0[1-9])|(1[0-2]))\/((2019)|(20[1-2][0-9]))$");
             Regex cardCvv = new Regex(@"^[0-9]{3,4}$");
 
             string creditExperition;
@@ -96,21 +127,30 @@ namespace Point_of_Sale_Midterm
                     Console.WriteLine("Please enter the credit card CVV");
                     cvv = Console.ReadLine();
                     Match validateCvv = cardCvv.Match(cvv);
-                    Console.WriteLine("valid");
-
+                    if (validateCvv.Success)
+                    {
+                        Console.WriteLine("valid");
+                    }
+                    else
+                    {
+                        Console.WriteLine("That is an invalid input.");
+                        PaymentOption();
+                    }
 
                 }
-                else 
+                else
                 {
-                    Console.WriteLine("unvalid");
+                    Console.WriteLine("invalid");
+                    PaymentOption();
                 }
 
             }
             else
             {
-                Console.WriteLine("The card number entered is unvaild");
+                Console.WriteLine("The card number entered is invaild");
+                PaymentOption();
+
             }
         }
     }
 }
-        

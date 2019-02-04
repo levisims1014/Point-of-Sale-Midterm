@@ -45,7 +45,6 @@
   <ItemGroup>
     <Compile Include="Calculations.cs" />
     <Compile Include="Controller.cs" />
-    <Compile Include="ItemDetails.cs" />
     <Compile Include="ItemInformation.cs" />
     <Compile Include="MenuView.cs" />
     <Compile Include="PaymentType.cs" />
