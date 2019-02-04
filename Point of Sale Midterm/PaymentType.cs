@@ -15,7 +15,6 @@ namespace Point_of_Sale_Midterm
         }
         public void PaymentOption()
         {
-
             bool run = true;
             while (run == true)
             {
@@ -46,11 +45,8 @@ namespace Point_of_Sale_Midterm
                 }
                 else if (input == 3)
                 {
-<<<<<<< HEAD
-                    // Check();
-=======
+
                     Check();
->>>>>>> 12dfd99b62945affed8fbe2e03213c9c40904bfc
                 }
             }
         }
@@ -107,31 +103,21 @@ namespace Point_of_Sale_Midterm
         }
         public void CreditCard()
         {
-<<<<<<< HEAD
             bool checkout = true;
             while (checkout)
             {
-                Console.WriteLine("Please enter your credit card number:");
-                Regex cardNumber = new Regex(@"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$");
-                Regex cardExpiration = new Regex(@"^((0[1-9])|(1[0-2]))\/((2019)|(20[1-2][0-9]))$");
-                Regex cardCvv = new Regex(@"^[0-9]{3,4}$");
-=======
             Console.WriteLine("Please enter your credit card number:");
             Regex cardNumber = new Regex(@"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$");
             Regex cardExpiration = new Regex(@"^((0[1-9])|(1[0-2]))\/((2019)|(20[1-2][0-9]))$");
             Regex cardCvv = new Regex(@"^[0-9]{3,4}$");
->>>>>>> 12dfd99b62945affed8fbe2e03213c9c40904bfc
 
                 string creditExperition;
                 string cvv;
-
                 string creditNumber = Console.ReadLine();
                 Match validateCreditNumber = cardNumber.Match(creditNumber);
 
-
                 if (validateCreditNumber.Success)
                 {
-<<<<<<< HEAD
                     Console.WriteLine("The card number entered is vaild");
                     Console.WriteLine("Please enter the credit card expiration in the form of(MM/YYYY)");
                     creditExperition = Console.ReadLine();
@@ -142,7 +128,15 @@ namespace Point_of_Sale_Midterm
                         Console.WriteLine("Please enter the credit card CVV");
                         cvv = Console.ReadLine();
                         Match validateCvv = cardCvv.Match(cvv);
-                        Console.WriteLine("valid");
+                        if (validateCvv.Success)
+                        {
+                            Console.WriteLine("valid");
+                        }
+                        else
+                        {
+                            Console.WriteLine("That is an invalid input.");
+                            PaymentOption();
+                        }
                     }
                     else
 
@@ -150,41 +144,21 @@ namespace Point_of_Sale_Midterm
                         Console.WriteLine("unvalid input ");
                         Console.WriteLine("Decline");
                         checkout = true;
-=======
-                    Console.WriteLine("valid");
-                    Console.WriteLine("Please enter the credit card CVV");
-                    cvv = Console.ReadLine();
-                    Match validateCvv = cardCvv.Match(cvv);
-                    if (validateCvv.Success)
-                    {
-                        Console.WriteLine("valid");
-                    }
-                    else
-                    {
-                        Console.WriteLine("That is an invalid input.");
                         PaymentOption();
->>>>>>> 12dfd99b62945affed8fbe2e03213c9c40904bfc
+
                     }
+
+
 
                 }
                 else
                 {
-<<<<<<< HEAD
                     Console.WriteLine("The card number entered is unvaild");
-                }
-=======
-                    Console.WriteLine("invalid");
                     PaymentOption();
                 }
-
             }
-            else
-            {
-                Console.WriteLine("The card number entered is invaild");
-                PaymentOption();
 
->>>>>>> 12dfd99b62945affed8fbe2e03213c9c40904bfc
             }
         }
     }
-}
+
