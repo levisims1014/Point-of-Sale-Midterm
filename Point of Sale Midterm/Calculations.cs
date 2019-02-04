@@ -8,7 +8,8 @@ namespace Point_of_Sale_Midterm
 {
     class Calculations
     {
-
+        PaymentType obj = new PaymentType();
+        double money = obj.Cash();
         double subtotal;
         double salesTax;
         double grandTotal;

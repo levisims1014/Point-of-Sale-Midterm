@@ -13,8 +13,9 @@ namespace Point_of_Sale_Midterm
         {
 
         }
-        public void PaymentOption()
+        public string PaymentOption()
         {
+            string paymentMrthod = "";
             bool run = true;
             while (run == true)
             {
@@ -38,17 +39,22 @@ namespace Point_of_Sale_Midterm
                 if (input == 1)
                 {
                     Cash();
+                    paymentMrthod = "cash";
                 }
                 else if (input == 2)
                 {
                     CreditCard();
+                    paymentMrthod = "CreditCard";
                 }
                 else if (input == 3)
                 {
 
                     Check();
+                    paymentMrthod = "check";
                 }
             }
+            return paymentMrthod;
+
         }
         public void Check()
         {
@@ -80,6 +86,7 @@ namespace Point_of_Sale_Midterm
                 Console.WriteLine("Invalid.");
                 PaymentOption();
             }
+
         }
         public double Cash()
         {
