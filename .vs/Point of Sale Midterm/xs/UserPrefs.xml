@@ -1,10 +1,11 @@
 ﻿<Properties StartupConfiguration="{641429F4-CA58-424A-ABF9-201E426D3B2A}|Default">
-  <MonoDevelop.Ide.Workbench ActiveDocument="Point of Sale Midterm/Receipt.cs">
+  <MonoDevelop.Ide.Workbench ActiveDocument="Point of Sale Midterm/MenuView.cs">
     <Files>
       <File FileName="Point of Sale Midterm/Calculations.cs" Line="61" Column="1" />
-      <File FileName="Point of Sale Midterm/PaymentType.cs" Line="186" Column="6" />
+      <File FileName="Point of Sale Midterm/PaymentType.cs" Line="51" Column="18" />
       <File FileName="Point of Sale Midterm/Receipt.cs" Line="61" Column="1" />
       <File FileName="Point of Sale Midterm/Controller.cs" Line="31" Column="21" />
+      <File FileName="Point of Sale Midterm/MenuView.cs" Line="1" Column="1" />
     </Files>
   </MonoDevelop.Ide.Workbench>
   <MonoDevelop.Ide.ItemProperties.Point_220of_220Sale_220Midterm PreferredExecutionTarget="MonoDevelop.Default" />

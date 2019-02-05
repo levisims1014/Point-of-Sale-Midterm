@@ -34,21 +34,21 @@ namespace Point_of_Sale_Midterm
             Console.ForegroundColor = color;
             foreach (orderedItemInfo orderedItem in orderedList)
             {
-                order = string.Format("{0,-40} {1,-40} {2,-40}$", orderedItem.Name, orderedItem.Quantity, orderedItem.Price+"$");
+                order = string.Format("{0,-40} {1,-40} {2,-40}", orderedItem.Name, orderedItem.Quantity, "$"+orderedItem.Price);
                 Console.WriteLine(order);
             }
             Console.WriteLine();
-            Console.WriteLine("Sales Tax: " + calculation.salesTax+"$");
-            Console.WriteLine("Grand Total: " + calculation.grandTotal+"$");
-            Console.WriteLine("Paid with " + paymentType);
+            Console.WriteLine("Sales Tax: "+"$"+ calculation.salesTax);
+            Console.WriteLine("Grand Total: " + "$"+calculation.grandTotal);
+            Console.WriteLine("Paid with " +"$"+ paymentType);
             if (paymentType == "Cash")
             {
-                Console.WriteLine("Paid: " + calculation.cashAmount+"$");
-                Console.WriteLine("Change: " + calculation.changeCash+"$");
+                Console.WriteLine("Paid: " +"$"+calculation.cashAmount);
+                Console.WriteLine("Change: " +"$"+ calculation.changeCash);
             }
             else
             {
-                Console.WriteLine("Paid " + calculation.grandTotal);
+                Console.WriteLine("Paid " +"$"+ calculation.grandTotal);
             }           
             
             DateTime today = DateTime.Now;
