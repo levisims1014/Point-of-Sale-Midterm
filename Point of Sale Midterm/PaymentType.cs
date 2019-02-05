@@ -19,9 +19,15 @@ namespace Point_of_Sale_Midterm
             bool run = true;
             while (run == true)
             {
-                Console.WriteLine("How would you like to pay? 1.) Cash, 2.) Credit Card, or 3.) Check?");
+                ConsoleColor color = ConsoleColor.Cyan;
+                Console.ForegroundColor = color;
+                Console.WriteLine("How would you like to pay?\n1.) Cash\n2.) Credit Card\n3.) Check");
+                Console.WriteLine();
                 int input = 0;
+                color = ConsoleColor.Blue;
+                Console.ForegroundColor = color;
                 bool option = int.TryParse(Console.ReadLine(), out input);
+
                 if (option == false)
                 {
                     Console.WriteLine("Sorry didn't understand input!");
@@ -94,7 +100,7 @@ namespace Point_of_Sale_Midterm
             bool checkcash = true;
             while (checkcash == true)
             {
-                Console.WriteLine("Please enter the amount of money you are with paying today.");
+                Console.WriteLine("Please enter the payment amount : ");
                 bool checkinput = double.TryParse(Console.ReadLine(), out input);
                 if (checkinput == false)
                 {
@@ -108,11 +114,10 @@ namespace Point_of_Sale_Midterm
                 }
                 else
                 {
-                    Console.WriteLine("Please enter a greater amount.");
+                    Console.WriteLine("the payment amount wasn't enough!! .");
                     checkcash = true;
                 }
             }
-            
             return input;
         }
         public void CreditCard(Calculations calc)
@@ -133,12 +138,14 @@ namespace Point_of_Sale_Midterm
                 if (validateCreditNumber.Success)
                 {
                     Console.WriteLine("The card number entered is vaild");
+                    Console.WriteLine();
                     Console.WriteLine("Please enter the credit card expiration in the form of(MM/YYYY)");
                     creditExperition = Console.ReadLine();
                     Match expiration = cardExpiration.Match(creditExperition);
                     if (expiration.Success)
                     {
                         Console.WriteLine("valid");
+                        Console.WriteLine();
                         Console.WriteLine("Please enter the credit card CVV");
                         cvv = Console.ReadLine();
                         Match validateCvv = cardCvv.Match(cvv);
@@ -148,14 +155,15 @@ namespace Point_of_Sale_Midterm
                         }
                         else
                         {
-                            Console.WriteLine("That is an invalid input.");
+                            Console.WriteLine("invalid CVV number.");
+                            Console.WriteLine("Decline");
                             PaymentOption(calc);
                         }
                     }
                     else
 
                     {
-                        Console.WriteLine("unvalid input ");
+                        Console.WriteLine("invalid expiration date.");
                         Console.WriteLine("Decline");
                         checkout = true;
                         PaymentOption(calc);
@@ -167,7 +175,8 @@ namespace Point_of_Sale_Midterm
                 }
                 else
                 {
-                    Console.WriteLine("The card number entered is unvaild");
+                    Console.WriteLine("invalid credit card number.");
+                    Console.WriteLine("Decline");
                     PaymentOption(calc);
                 }
             }

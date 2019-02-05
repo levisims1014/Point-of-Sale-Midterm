@@ -34,7 +34,7 @@ namespace Point_of_Sale_Midterm
             Console.ForegroundColor = color;
             foreach (orderedItemInfo orderedItem in orderedList)
             {
-                order = string.Format("{0,-40} {1,-40} {2,-40}", orderedItem.Name, orderedItem.Quantity, orderedItem.Price);
+                order = string.Format("{0,-40} {1,-40} {2,-40}$", orderedItem.Name, orderedItem.Quantity, orderedItem.Price);
                 Console.WriteLine(order);
             }
             Console.WriteLine();
@@ -43,8 +43,8 @@ namespace Point_of_Sale_Midterm
             Console.WriteLine("Paid with " + paymentType);
             if (paymentType == "Cash")
             {
-                Console.WriteLine("Paid: " + calculation.cashAmount);
-                Console.WriteLine("Change: " + calculation.changeCash);
+                Console.WriteLine("Paid: " + calculation.cashAmount+"$");
+                Console.WriteLine("Change: " + calculation.changeCash+"$");
             }
             else
             {

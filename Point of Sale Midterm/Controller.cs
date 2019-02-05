@@ -27,7 +27,8 @@ namespace Point_of_Sale_Midterm
             menu.Add(new ItemInformation("Bagel", "Breakfast", "Bread,Cream Cheese", 1.99));
             obj = new MenuView(menu);
             obj.DisplayMenu();
-             Order();
+            Console.WriteLine();
+            Order();
         }
 
         public void SetConsoleColorBlue()
@@ -129,7 +130,8 @@ namespace Point_of_Sale_Midterm
                         // when the user finish his order we are going to calculate the total,tax,then printing the receipt
                         Calculations obj = new Calculations(orderedItems);
 
-                        Console.WriteLine("Your total is "  +obj.grandTotal);
+                        Console.WriteLine("Your total is "  +obj.grandTotal+"$");
+                        Console.WriteLine();
                         PaymentType paymentobj = new PaymentType();
                         string paymentType = paymentobj.PaymentOption(obj);                        
                         Receipt receipt = new Receipt(obj);
