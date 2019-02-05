@@ -36,7 +36,6 @@ C:/Users/Mrs Huie/source/repos/Midterm/Point of Sale Midterm/bin/Debug/Point of 
 /Users/Noha/Desktop/untitled folder 4/Point of Sale Midterm/bin/Debug/Point of Sale Midterm.exe.config
 /Users/Noha/Desktop/untitled folder 4/Point of Sale Midterm/bin/Debug/Point of Sale Midterm.exe
 /Users/Noha/Desktop/untitled folder 4/Point of Sale Midterm/bin/Debug/Point of Sale Midterm.pdb
-/Users/Noha/Desktop/untitled folder 4/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.csprojAssemblyReference.cache
 /Users/Noha/Desktop/untitled folder 4/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.csproj.CoreCompileInputs.cache
 /Users/Noha/Desktop/untitled folder 4/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.exe
 /Users/Noha/Desktop/untitled folder 4/Point of Sale Midterm/obj/Debug/Point of Sale Midterm.pdb
