@@ -13,7 +13,7 @@ namespace Point_of_Sale_Midterm
         {
 
         }
-        public string PaymentOption()
+        public string PaymentOption(Calculations calc)
         {
             string paymentMrthod = "";
             bool run = true;
@@ -38,25 +38,25 @@ namespace Point_of_Sale_Midterm
                 }
                 if (input == 1)
                 {
-                    Cash();
-                    paymentMrthod = "cash";
+                    Cash(calc);
+                    paymentMrthod = "Cash";
                 }
                 else if (input == 2)
                 {
-                    CreditCard();
-                    paymentMrthod = "CreditCard";
+                    CreditCard(calc);
+                    paymentMrthod = "Credit Card";
                 }
                 else if (input == 3)
                 {
 
-                    Check();
-                    paymentMrthod = "check";
+                    Check(calc);
+                    paymentMrthod = "Check";
                 }
             }
             return paymentMrthod;
 
         }
-        public void Check()
+        public void Check(Calculations calc)
         {
             Regex routing = new Regex("^[0-9]{8,10}$");
             Regex account = new Regex("^[0-9]{10,17}$");
@@ -77,38 +77,45 @@ namespace Point_of_Sale_Midterm
                 else
                 {
                     Console.WriteLine("Invalid");
-                    PaymentOption();
+                    PaymentOption(calc);
                 }
 
             }
             else
             {
                 Console.WriteLine("Invalid.");
-                PaymentOption();
+                PaymentOption(calc);
             }
 
         }
-        public double Cash()
+        public double Cash(Calculations calcs)
         {
             double input = 0;
             bool checkcash = true;
             while (checkcash == true)
             {
-                Console.WriteLine("Please enter the amount of money you paying today.");
+                Console.WriteLine("Please enter the amount of money you are with paying today.");
                 bool checkinput = double.TryParse(Console.ReadLine(), out input);
                 if (checkinput == false)
                 {
                     Console.WriteLine("You entered invalid amount!");
                     checkcash = true;
                 }
-                else
+                else if (calcs.EnoughFunds(input))
                 {
+                    Console.WriteLine("Enough funds");
                     checkcash = false;
                 }
+                else
+                {
+                    Console.WriteLine("Please enter a greater amount.");
+                    checkcash = true;
+                }
             }
+            
             return input;
         }
-        public void CreditCard()
+        public void CreditCard(Calculations calc)
         {
             bool checkout = true;
             while (checkout)
@@ -142,7 +149,7 @@ namespace Point_of_Sale_Midterm
                         else
                         {
                             Console.WriteLine("That is an invalid input.");
-                            PaymentOption();
+                            PaymentOption(calc);
                         }
                     }
                     else
@@ -151,7 +158,7 @@ namespace Point_of_Sale_Midterm
                         Console.WriteLine("unvalid input ");
                         Console.WriteLine("Decline");
                         checkout = true;
-                        PaymentOption();
+                        PaymentOption(calc);
 
                     }
 
@@ -161,7 +168,7 @@ namespace Point_of_Sale_Midterm
                 else
                 {
                     Console.WriteLine("The card number entered is unvaild");
-                    PaymentOption();
+                    PaymentOption(calc);
                 }
             }
 

@@ -20,7 +20,7 @@ namespace Point_of_Sale_Midterm
         // At the end, display a receipt with all items ordered, subtotal, grand total, and
         //appropriate payment info.
 
-        public void DisplayReceript()
+        public void DisplayReceript(string paymentType)
         {
             ConsoleColor color = ConsoleColor.DarkRed;
             Console.ForegroundColor = color;
@@ -38,9 +38,20 @@ namespace Point_of_Sale_Midterm
                 Console.WriteLine(order);
             }
             Console.WriteLine();
-            calculation.Totals();
-
-            DateTime today = DateTime.Today;
+            Console.WriteLine("Sales Tax: " + calculation.salesTax);
+            Console.WriteLine("Grand Total: " + calculation.grandTotal);
+            Console.WriteLine("Paid with " + paymentType);
+            if (paymentType == "Cash")
+            {
+                Console.WriteLine("Paid: " + calculation.cashAmount);
+                Console.WriteLine("Change: " + calculation.changeCash);
+            }
+            else
+            {
+                Console.WriteLine("Paid " + calculation.grandTotal);
+            }           
+            
+            DateTime today = DateTime.Now;
             Console.WriteLine(today);
 
 

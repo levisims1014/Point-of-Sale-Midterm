@@ -128,10 +128,12 @@ namespace Point_of_Sale_Midterm
                     {
                         // when the user finish his order we are going to calculate the total,tax,then printing the receipt
                         Calculations obj = new Calculations(orderedItems);
+
+                        Console.WriteLine("Your total is "  +obj.grandTotal);
                         PaymentType paymentobj = new PaymentType();
-                        paymentobj.PaymentOption();
+                        string paymentType = paymentobj.PaymentOption(obj);                        
                         Receipt receipt = new Receipt(obj);
-                        receipt.DisplayReceript();
+                        receipt.DisplayReceript(paymentType);
 
 
                         break; // exit the loop

@@ -9,14 +9,17 @@ namespace Point_of_Sale_Midterm
     class Calculations
     {
         PaymentType obj = new PaymentType();
-        double money = obj.Cash();
-        double subtotal;
-        double salesTax;
-        double grandTotal;
+        //double money = obj.Cash();
+        public double subtotal;
+        public double salesTax;
+        public double grandTotal;
+        public double cashAmount;
+        public double changeCash;
         public List<orderedItemInfo> orderedItems = new List<orderedItemInfo>();
         public Calculations(List<orderedItemInfo> orderedItems)
         {
             this.orderedItems = orderedItems;
+            Totals();
         }
         
         public void Totals() //change to public static int Totals (pass in list) return 
@@ -28,17 +31,30 @@ namespace Point_of_Sale_Midterm
 
             foreach (orderedItemInfo item in orderedItems)
             {
-                subtotal = item.Price * item.Quantity;
+                subtotal = item.Price * item.Quantity;              
+                
                 costs.Add(subtotal);
             }
             double sum = costs.Sum();
-            Console.WriteLine("Subtotal = " + sum);//transfer to receipt view
-            salesTax = costs.Sum() * salesTax;
-            grandTotal = Math.Round(salesTax + sum, 2);
-            Console.WriteLine("Sales Tax = " + salesTax);//transfer to receipt view
-            Console.WriteLine("Total = " + grandTotal);//transfer to receipt view
+            //Console.WriteLine("Subtotal = " + sum);//transfer to receipt view
+            salesTax = Math.Round(costs.Sum() * salesTax,2);
+            grandTotal = salesTax + sum;
+          
+        }
+        
 
-
+        public bool EnoughFunds(double cashAmount)
+        {
+            if (cashAmount < grandTotal)
+            {
+                return false;
+            }
+            else
+            {
+                changeCash =cashAmount - grandTotal;
+                this.cashAmount = cashAmount;
+                return true;
+            }
         }
     }
 }
