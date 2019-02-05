@@ -125,10 +125,10 @@ namespace Point_of_Sale_Midterm
             bool checkout = true;
             while (checkout)
             {
-            Console.WriteLine("Please enter your credit card number:");
-            Regex cardNumber = new Regex(@"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$");
-            Regex cardExpiration = new Regex(@"^((0[1-9])|(1[0-2]))\/((2019)|(20[1-2][0-9]))$");
-            Regex cardCvv = new Regex(@"^[0-9]{3,4}$");
+                Console.WriteLine("Please enter your credit card number:");
+                Regex cardNumber = new Regex(@"^(?:5[1-5][0-9]{2}|222[1-9]|22[3-9][0-9]|2[3-6][0-9]{2}|27[01][0-9]|2720)[0-9]{12}$");
+                Regex cardExpiration = new Regex(@"^((0[1-9])|(1[0-2]))\/((2019)|(20[1-2][0-9]))$");
+                Regex cardCvv = new Regex(@"^[0-9]{3,4}$");
 
                 string creditExperition;
                 string cvv;
@@ -152,6 +152,7 @@ namespace Point_of_Sale_Midterm
                         if (validateCvv.Success)
                         {
                             Console.WriteLine("valid");
+                            break;
                         }
                         else
                         {
